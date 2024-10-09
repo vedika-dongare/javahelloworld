@@ -1,0 +1,43 @@
+// Base class (or superclass)
+class Addition {
+    // Method to add two numbers
+    int addTwoNumbers(int a, int b) {
+        return a + b;
+    }
+}
+
+// Derived class (subclass of Addition)
+class AdvancedAddition extends Addition {
+    // Method to add three numbers
+    int addThreeNumbers(int a, int b, int c) {
+        // Reuse the addTwoNumbers method from the base class
+        return addTwoNumbers(a, b) + c;
+    }
+}
+
+// Another derived class (subclass of AdvancedAddition)
+class SuperAdvancedAddition extends AdvancedAddition {
+    // Method to add four numbers
+    int addFourNumbers(int a, int b, int c, int d) {
+        // Reuse the addThreeNumbers method from the intermediate class
+        return addThreeNumbers(a, b, c) + d;
+    }
+}
+
+// Main class to test the multilevel inheritance
+public class MultilevelInheritanceAdditionExample {
+    public static void main(String[] args) {
+        // Create an object of SuperAdvancedAddition class
+        SuperAdvancedAddition addition = new SuperAdvancedAddition();
+        
+        // Call methods from all the levels of inheritance
+        int sumOfTwo = addition.addTwoNumbers(10, 20);      // From Addition class
+        int sumOfThree = addition.addThreeNumbers(10, 20, 30);  // From AdvancedAddition class
+        int sumOfFour = addition.addFourNumbers(10, 20, 30, 40); // From SuperAdvancedAddition class
+        
+        // Output the results
+        System.out.println("Sum of two numbers: " + sumOfTwo);
+        System.out.println("Sum of three numbers: " + sumOfThree);
+        System.out.println("Sum of four numbers: " + sumOfFour);
+    }
+}
